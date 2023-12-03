@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('login-button').addEventListener('click', function () {
         openPopup('/signin/');
     });
+    document.getElementById('bookLog').addEventListener('click', function () {
+        openPopup('/signin/');
+    });
 
     document.getElementById('signup-button').addEventListener('click', function () {
         openPopup('/signup/');

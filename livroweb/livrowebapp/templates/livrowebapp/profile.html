@@ -3,32 +3,22 @@
 {% block content %}
 
 <link href="{% static 'livrowebapp/css/profile.css' %}" rel="stylesheet" />
-
 <div class="content">
   <div class="profilebackground">
     <img src="{% static 'livrowebapp/img/profilepicture.png' %}" />
-    <p>@username</p>
-    <a button class="editprofile" href="/manageprofile/">Edit Profile</a>
-
+    <p>@{{ member.username }}</p>
+    <a button class="editprofile" href="{% url 'manageprofile' %}">Edit Profile</a>
   </div>
-
   <div class="profilebottom">
-
-    <div class="aboutuser">
-
-      <p> <b>About user: </b> <br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. </p>
-
+    <div class="profilebottomLeft">
+      <div class="aboutuser">
+        <p><b>About user:</b> <br><br>{{ member.about_user }}</p>
+      </div>
     </div>
-
     <div class="userbookshelf">
-
       <p> <b>User Bookshelf</b> <br>
-        Reading List</p>
-
+        Uploaded Books</p>
       <div class="books">
-
         <table>
           <tr>
             <th> <a href="#"> <img class="profileicon" src="{% static 'livrowebapp/img/book1.png' %}"></a></th>
@@ -60,11 +50,8 @@
           </tr>
         </table>
       </div>
-
     </div>
-
   </div>
 </div>
-
 <script src="{% static 'livrowebapp/js/profile.js' %}"></script>
 {% endblock %}

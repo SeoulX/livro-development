@@ -166,6 +166,8 @@ overflow: clip;
 .flex {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .comment-box, comment-list{
@@ -186,12 +188,16 @@ overflow: clip;
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 2px 2px #0002;
+    max-height: 300px; 
+    overflow-y: auto; 
+    padding: 10px;
 }
 
 .comment-list .user{
     display: flex;
     padding: 8px;
     overflow: hidden;
+    align-items: center;
 }
 
 .comment-list .user img{

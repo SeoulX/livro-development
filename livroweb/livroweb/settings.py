@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-s#*#sa17vb983f9nb6_*_=r57ax%qzl9tmcpu*v&+0)wwep15v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ["127.0.0.1", "192.168.254.105", "192.168.254.104", "localhost"]
 
 
 # Application definition
@@ -125,3 +125,5 @@ MEDIA_ROOT = BASE_DIR/'media'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = 'signin'

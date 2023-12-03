@@ -30,7 +30,7 @@
               <a href="/aboutus_logged/"> About Us</a>
               {% endif %} 
             </th>
-            <th>  <a href="/browse/"> Logout</a> </th>
+            <th>  <a href="{% url 'logout' %}"> Logout</a> </th>
             <th>
               {% if member.type_user == 'Reader' %}
                 <a href="{% url 'profile' %}"><img class="profileicon" src="{% static 'livrowebapp/img/profileicon.png' %}"></a>

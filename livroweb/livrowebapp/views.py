@@ -4,6 +4,11 @@ from .models import *
 from .forms import *
 from django.contrib import messages
 from django.db.models import Q
+from django.http import JsonResponse
+from functools import wraps
+from django.contrib.auth.hashers import make_password, check_password
+
+
 
 def land(request):
     return render(request, 'livrowebapp/landing.html')
@@ -37,26 +42,33 @@ def signin(request):
 def signup(request):
     if request.method == "POST":
         usrname = request.POST.get('username')
-        passw = request.POST.get('passw')
+        mail = request.POST.get('email')
+        passw = request.POST.get('password')
         confirmpass = request.POST.get('confirmpass')
-        if(passw == confirmpass):
+        if passw == confirmpass:
             form = Memberform(request.POST or None)
             if form.is_valid():
-                member = form.save()
-                member_active = Member.objects.get(username=usrname, password=passw)
-                request.session['member'] = {
-                    'username': member_active.username,
-                    'email':member_active.email,
-                    'password' : member_active.password,
-                    'type_user': member_active.type_user,
-                    'about_user': member_active.about_user
-                }
-                if member.type_user == 'Reader':
-                    messages.success(request, ('Thanks for Signing Up!'))
-                    return redirect('browse_reader')
-                elif member.type_user == 'Writer':
-                    messages.success(request, ('Thanks for Signing Up!'))
-                    return redirect('browse_writer')
+                member = form.save(commit=False)
+                member.password = make_password(passw)  # Hash the password
+                member.save()
+
+                # Use check_password to verify the password
+                if check_password(passw, member.password):
+                    request.session['member'] = {
+                        'username': member.username,
+                        'email': member.email,
+                        'password': member.password,
+                        'type_user': member.type_user,
+                        'about_user': member.about_user
+                    }
+                    if member.type_user == 'Reader':
+                        messages.success(request, ('Thanks for Signing Up!'))
+                        return redirect('browse_reader')
+                    elif member.type_user == 'Writer':
+                        messages.success(request, ('Thanks for Signing Up!'))
+                        return redirect('browse_writer')
+                else:
+                    messages.error(request, ('Password Not Match!'))
         else:
             messages.error(request, ('Password Not Match!'))
     else:    
@@ -68,7 +80,10 @@ def aboutus_logged(request):
     return render(request, 'livrowebapp/aboutus_logged.html', {'member': member_data})
 def browse_reader(request):
     member_data = request.session.get('member', None)
-    return render(request, 'livrowebapp/browse_reader.html', {'member': member_data})
+    all_books = Book.objects.all()
+    for book in all_books:
+        book.genre_list = book.genre.split(', ')
+    return render(request,  'livrowebapp/browse_reader.html', {'member': member_data, 'all_books': all_books})
 def browse_writer(request):
     member_data = request.session.get('member', None)
     all_books = Book.objects.all()
@@ -144,24 +159,70 @@ def delete_book(request, book_id):
         if request.method == 'POST':
             book.delete()
             messages.success(request, 'Book deleted successfully!')
-            return redirect('updatebooks')
-        return render(request, 'livrowebapp/deletebook.html', {'member': member_data, 'book': book})
+            return JsonResponse({'success': True})
+        return JsonResponse({'success': False, 'error': 'Invalid request method'})
     else:
-        # Redirect or handle the case when a non-writer tries to delete a book
-        return redirect('profile_writer')
+        return JsonResponse({'success': False, 'error': 'Permission denied'})
+def custom_login_required(view_func):
+    @wraps(view_func)
+    def _wrapped_view(request, *args, **kwargs):
+        # Check if the user is signed in using your custom session logic
+        member_data = request.session.get('member', None)
+        if not member_data:
+            # If not signed in, redirect to your signin page or any other page
+            return redirect('signin')
+
+        # If signed in, proceed with the original view function
+        return view_func(request, *args, **kwargs)
+
+    return _wrapped_view
+@custom_login_required
+
 def bookinformation(request, title):
     member_data = request.session.get('member', None)
     book = get_object_or_404(Book, title=title)
+
+    if request.method == 'POST':
+        # Handle comment submission
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.user = Member.objects.get(username=member_data['username'])  # Assuming the user is logged in
+            new_comment.book = book
+            new_comment.save()
+            return redirect('bookinformation', title=title)  # Redirect to refresh the page
+
+    else:
+        comment_form = CommentForm()
+
+    comments = book.comments.all()
+
     context = {
         'book': book,
+        'comments': comments,
+        'comment_form': comment_form,
     }
 
-    # Render the book information template with the context
-    return render(request, 'livrowebapp/bookinformation.html', context)  
+    return render(request, 'livrowebapp/bookinformation.html', context)
 def home(request):
     return render(request, 'livrowebapp/home.html')
+
 def browse(request):
-    return render(request, 'livrowebapp/browse.html')
+    member_data = request.session.get('member', None)
+
+    # Check for the login_required query parameter
+    login_required_param = request.GET.get('login_required', None)
+    if login_required_param:
+        messages.warning(request, 'You need to sign in first.')
+
+    all_books = Book.objects.all()
+    for book in all_books:
+        book.genre_list = book.genre.split(', ')
+
+    # Include the messages in the template context
+    messages_data = messages.get_messages(request)
+
+    return render(request, 'livrowebapp/browse.html', {'member': member_data, 'all_books': all_books, 'messages_data': messages_data})
 def fantasy(request):
     return render(request, 'livrowebapp/books/fantasy.html')
 def action(request):
@@ -170,3 +231,7 @@ def browse_content(request):
     member_data = request.session.get('member', None)
     all_books = Book.objects.all()
     return render(request, 'livrowebapp/browse-content.html', {'member': member_data, 'all_books': all_books})
+def logout(request):
+    if 'member' in request.session:
+        del request.session['member']
+    return redirect('browse')

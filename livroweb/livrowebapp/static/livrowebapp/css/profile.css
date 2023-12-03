@@ -1,4 +1,6 @@
-
+.profilebottomLeft{
+    flex-direction: column;
+}
 .profilebottom{
     display: flex;
     flex-direction: row;
@@ -8,15 +10,12 @@
 
 
 
-
-
 /* BOOKSHELF START */
 .userbookshelf{
     margin: auto;
     margin-top: 3%;
     float: right;
     width: 50%;
-    margin-left: 0%;
     padding: 50px;
     background-color: #FFFFFF;
     max-width: 800px;
@@ -55,23 +54,27 @@
 /* BOOKSHELF END!! */
 
 
+
 /* ABOUT USER START */
 .aboutuser{
     margin: auto;
-    margin-top: 3%;
+    margin-top: 10.2%;
+    margin-bottom: 3%;
     padding: 50px;
     background-color: #FFFFFF;
     max-width: 300px;
-    margin-left: 0%;
+    min-width: 300px;
+    min-height: 150px;
+    word-wrap: break-word;
     border-radius: 20px;
     box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
 }
 
 .aboutuser p{
-    text-align: left;
+    text-align: justify;
     margin-top: -5%;
     margin-left: -5%;
-    margin-bottom: 50px;
+    margin-bottom: 0%;
 }
 
 
@@ -99,8 +102,36 @@ text-decoration: none;
 padding-left: 20px;
 padding-right: 20px;
 color: #FFFFFF;
-background-color: #557B37;
+background-color: #557B37;;
 border-radius: 10px;
 font-weight: bold;
 }
 
+.addupdatebuttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px; /* Adjust this margin as needed */
+}
+  
+.addbook,
+.updatebook {
+  text-decoration: none;
+  padding: 10px 20px;
+  color: #FFFFFF;
+  background-color: #557B37;;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+
+
+@media
+(prefers-reduced-motion: no-preference) {
+  html {
+    background-color: #f2f7ff;
+    scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: hidden;
+   height: 100%;
+  }
+}

@@ -1,31 +1,41 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link href="{% static 'livrowebapp/css/browse.css' %}" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <link href="{% static 'livrowebapp/css/browse.css' %}" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
     <title>livro</title>
-  </head>
-
+</head>
 <body>
-  <div class="navbar" id="myNavbar">
+<div class="navbar" id="myNavbar">
     <div class="logo">
-      <a href="/browse/"><img src="{% static 'livrowebapp/img/logo.png' %}" width="100"/></a>
+        <a href="/browse/"><img src="{% static 'livrowebapp/img/logo.png' %}" width="100"/></a>
     </div>
-    <div class="navbarRight">        
-      <tr>
-          <th> <a href="/browse/"> Home</a> </th>
-          <th> <a href="/aboutus/"> About Us </a> </th>
-          <th> <a id ="login-button" class="login" href="#"> Login</a></th>
-          <th> <a id ="signup-button" class="signup" href="#"> Sign Up</a> </th>
-        </tr>        
+    <div class="navbarRight">
+        <tr>
+            <th> <a href="/browse/"> Home</a> </th>
+            <th> <a href="/aboutus/"> About Us </a> </th>
+            <th> <a id ="login-button" class="login" href="#"> Login</a></th>
+            <th> <a id ="signup-button" class="signup" href="#"> Sign Up</a> </th>
+        </tr>
     </div>
-  </div>
+</div>
 
-  <div id="popup-container" class="overlay"></div>
+<div id="message-container" class="messages">
+  {% if messages_data %}
+      <div class="messages">
+          {% for message in messages_data %}
+              <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+          {% endfor %}
+      </div>
+  {% endif %}
+</div>
 
-  {% include 'livrowebapp/books/browse-content.html' %}
+<div id="popup-container" class="overlay">
+</div>
+
+{% include 'livrowebapp/books/browse-content.html' %}
 <script src="{% static 'livrowebapp/js/browse.js' %}"></script>
 </body>
 </html>

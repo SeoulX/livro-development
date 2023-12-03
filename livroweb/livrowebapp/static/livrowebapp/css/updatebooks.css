@@ -131,4 +131,36 @@ body {
   .action-buttons button:hover {
     background-color: #45a049;
   }
-  
+
+#confirmation-message {
+  display: none;
+  position: fixed;
+  top: 50px; /* Adjust as needed for the desired distance from the top */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  max-width: 400px; /* Adjust as needed for the desired maximum width */
+  text-align: center;
+}
+
+#confirmation-message p {
+  margin-bottom: 15px;
+}
+
+#confirm-delete,
+#cancel-delete {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+#cancel-delete {
+  background-color: #f44336;
+}

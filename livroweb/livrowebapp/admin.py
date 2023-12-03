@@ -1,4 +1,9 @@
 from django.contrib import admin
-from .models import Member
+from .models import *
 
 admin.site.register(Member)
+admin.site.register(Library)
+admin.site.register(Book)
+admin.site.register(Comment)
+admin.site.register(Rating)
+admin.site.register(Feedback)

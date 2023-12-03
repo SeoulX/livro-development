@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import logout
 
 urlpatterns = [
     path('', views.land, name='land'),
@@ -24,6 +25,7 @@ urlpatterns = [
     path('edit_book/<int:book_id>/', views.edit_book, name='edit_book'),
     path('delete_book/<int:book_id>/', views.delete_book, name='delete_book'),
     path('browse-content/', views.browse_content, name='browse_content'),
+    path('logout/', logout, name='logout'),
 ]
 
 if settings.DEBUG:

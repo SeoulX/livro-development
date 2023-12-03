@@ -16,7 +16,7 @@
   
         <div class="navbarRight">        
           <tr>
-              <th> <a button class="save" href="/profile/">SAVE CHANGES</a> </th>
+              <th> <a button class="save" href="{% url 'profile' %}">SAVE CHANGES</a> </th>
               <th> <a button class="cancel" href="/profile/">CANCEL CHANGES</a> </th>
             </tr>
                  
@@ -26,51 +26,48 @@
     <div class="contents">
         <div class="profilebg"> 
             <img src="{% static 'livrowebapp/img/profilepicture.png' %}"/>
-            <p>@username</p>
+            <p>@{{ member.username }}</p>
         </div>
 
         <div class="information">
-
-            <div class="user">
-                <p> <b>About user</b></p>
-                <div class="info">
-                    <textarea type="text" id="abtreader" name="abtreader"></textarea>
+            <form id="updateUser" action="{% url 'manageprofile' %}" method="POST">
+            {% csrf_token %}
+                <div class="user">
+                    <p> <b>About user</b></p>
+                    <div class="info">
+                        <textarea type="text" id="abtwriter" name="abtwriter" placeholder={{ member.about_user }}></textarea>
+                    </div>
                 </div>
-            </div>
-
-            <div class="settings">
-                <p> <b>Settings</b></p>
-
-                <div class="details">
-                    <table>
-                        <tr>
-                            <th><label for="username">Username:</label></th>
-                            <th><input type="text" id="username" name="username"></th>
-                        </tr>
-
-                        <tr>
-                            <th><label for="email">Email Address:</label></th>
-                            <th><input type="email" id="email" name="email"></th>
-                        </tr>
-
-                        <tr>
-                            <th><label for="current_password">Current Password:</label></th>
-                            <th><input type="password" id="cpassword" name="current_password"></th>
-                        </tr>
-
-                        <tr>
-                            <th><label for="new_password">New Password:</label></th>
-                            <th><input type="password" id="npassword" name="new_password"></th>
-                        </tr>
-
-                        <tr>
-                            <th><label for="confirm_new_password">Confirm New Password:</label></th>
-                            <th><input type="password" id="cnpassword" name="confirm_new_password"></th>
-                        </tr>
-                    </table>
+                <div class="settings">
+                    <p> <b>Settings</b></p>
+                    <div class="details">
+                        <table>
+                            <tr>
+                                <th><label for="username">Username:</label></th>
+                                <th><input type="text" id="username" name="usrname" placeholder={{ member.username }}></th>
+                            </tr>
+                            <tr>
+                                <th><label for="email">Email Address:</label></th>
+                                <th><input type="email" id="email" name="mail" placeholder={{ member.email }}></th>
+                            </tr>
+                            <tr>
+                                <th><label for="current_password">Current Password:</label></th>
+                                <th><input type="password" id="cpassword" name="current_password" placeholder="************"></th>
+                            </tr>
+                            <tr>
+                                <th><label for="new_password">New Password:</label></th>
+                                <th><input type="password" id="npassword" name="new_password" placeholder="************"></th>
+                            </tr>
+                            <tr>
+                                <th><label for="confirm_new_password">Confirm New Password:</label></th>
+                                <th><input type="password" id="cnpassword" name="confirm_new_password" placeholder="************"></th>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
+    <script src="{% static 'livrowebapp/js/profile.js' %}"></script>
 </body>       
 </html>
