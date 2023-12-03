@@ -94,6 +94,8 @@ overflow: clip;
     margin-right: 6px;
     cursor: pointer;
     color: #555555;
+    background: transparent;
+    border-color: transparent;
 }
 
 .post-rating-selected > .post-rating-button,

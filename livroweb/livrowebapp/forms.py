@@ -18,14 +18,4 @@ class BookForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ['text']
-
-class RatingForm(forms.ModelForm):
-    class Meta:
-        model = Rating
-        fields = ['likes', 'dislikes']
-
-class FeedbackForm(forms.ModelForm):
-    class Meta:
-        model = Feedback
-        fields = []
+        fields = ['comment']

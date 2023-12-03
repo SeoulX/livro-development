@@ -183,24 +183,44 @@ def bookinformation(request, title):
     book = get_object_or_404(Book, title=title)
 
     if request.method == 'POST':
-        # Handle comment submission
         comment_form = CommentForm(request.POST)
-        if comment_form.is_valid():
+        liked = request.POST.get('liked', None)
+
+        if liked:
+            user = Member.objects.get(username=member_data['username'])
+            user_fave, created = UserFave.objects.get_or_create(user=user, book=book)
+            user_fave.liked = not user_fave.liked
+            user_fave.save()
+
+        elif comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
-            new_comment.user = Member.objects.get(username=member_data['username'])  # Assuming the user is logged in
+            new_comment.user = Member.objects.get(username=member_data['username'])
             new_comment.book = book
             new_comment.save()
-            return redirect('bookinformation', title=title)  # Redirect to refresh the page
+
+        return redirect('bookinformation', title=title)
 
     else:
         comment_form = CommentForm()
 
     comments = book.comments.all()
+    print(comments)
+    likes_count = book.userfave_set.filter(liked=True).count()
+
+    liked_status = None
+    if member_data:
+        user = Member.objects.get(username=member_data['username'])
+        user_fave = UserFave.objects.filter(user=user, book=book).first()
+        if user_fave:
+            liked_status = user_fave.liked
 
     context = {
         'book': book,
         'comments': comments,
         'comment_form': comment_form,
+        'likes_count': likes_count,
+        'user': member_data,
+        'liked_status': liked_status,
     }
 
     return render(request, 'livrowebapp/bookinformation.html', context)

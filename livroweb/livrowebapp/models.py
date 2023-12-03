@@ -30,7 +30,6 @@ class Book(models.Model):
     book_cover = models.ImageField(upload_to='book_covers/')
     uploader = models.ForeignKey(Member, on_delete=models.CASCADE, related_name='uploaded_books', null=True)
     uploader_user = models.CharField(max_length=200)
-    feedbacks = models.ManyToManyField('Feedback', related_name='books')
     
     def __str__(self):
         return self.title
@@ -39,14 +38,9 @@ class Comment(models.Model):
     user = models.ForeignKey(Member, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='comments')
     date = models.DateTimeField(auto_now=True) 
-    text = models.TextField()
-
-class Rating(models.Model):
+    comment = models.TextField()
+    
+class UserFave(models.Model):
     user = models.ForeignKey(Member, on_delete=models.CASCADE)
-    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='ratings')
-    likes = models.PositiveIntegerField(default=0)
-    dislikes = models.PositiveIntegerField(default=0)
-
-class Feedback(models.Model):
-    rating = models.OneToOneField(Rating, on_delete=models.CASCADE, related_name='feedback', null=True)
-    comment = models.OneToOneField(Comment, on_delete=models.CASCADE, related_name='feedback', null=True)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    liked = models.BooleanField(default=False)   
