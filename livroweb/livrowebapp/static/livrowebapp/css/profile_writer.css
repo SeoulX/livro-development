@@ -1,0 +1,137 @@
+.profilebottomLeft{
+    flex-direction: column;
+}
+.profilebottom{
+    display: flex;
+    flex-direction: row;
+    width: 1366px; margin: 0 auto; overflow: hidden;
+    height: 100%;
+}
+
+
+
+/* BOOKSHELF START */
+.userbookshelf{
+    margin: auto;
+    margin-top: 3%;
+    float: right;
+    width: 50%;
+    padding: 50px;
+    background-color: #FFFFFF;
+    max-width: 800px;
+    border-radius: 20px;
+    box-shadow:  0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+    margin-bottom: 5px;
+}
+
+.books p{
+    padding: 3px;
+    display: inline;
+    border:1px;
+    border-style:solid;
+    border-color: #333333;
+    border-radius: 10px;
+}
+.books{
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+   
+}
+.userbookshelf p{
+
+    margin-top: -15px;
+  position: sticky;
+}
+
+.userbookshelf img{
+    width: auto;
+    height: 250px;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+/* BOOKSHELF END!! */
+
+
+
+/* ABOUT USER START */
+.aboutuser{
+    margin: auto;
+    margin-top: 10.2%;
+    margin-bottom: 3%;
+    padding: 50px;
+    background-color: #FFFFFF;
+    max-width: 300px;
+    min-width: 300px;
+    min-height: 150px;
+    word-wrap: break-word;
+    border-radius: 20px;
+    box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+}
+
+.aboutuser p{
+    text-align: justify;
+    margin-top: -5%;
+    margin-left: -5%;
+    margin-bottom: 0%;
+}
+
+
+/* ABOUT USER END */
+
+
+
+/* PROFILE */
+.profilebackground{
+
+  text-align: center;
+    padding: 40px;
+    margin: auto;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 9px 0 rgba(0,0,0,.2);
+  
+}
+.profilebackground img{
+   margin: auto;
+    height: 100PX;
+    width: auto;
+}
+.editprofile{
+text-decoration: none;
+padding-left: 20px;
+padding-right: 20px;
+color: #FFFFFF;
+background-color: #76377b;
+border-radius: 10px;
+font-weight: bold;
+}
+
+.addupdatebuttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px; /* Adjust this margin as needed */
+}
+  
+.addbook,
+.updatebook {
+  text-decoration: none;
+  padding: 10px 20px;
+  color: #FFFFFF;
+  background-color: #76377b;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+
+
+@media
+(prefers-reduced-motion: no-preference) {
+  html {
+    background-color: #f2f7ff;
+    scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: hidden;
+   height: 100%;
+  }
+}

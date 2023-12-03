@@ -1,0 +1,143 @@
+/* Global styles */
+body {
+  background-color: #f2f7ff;
+  font-family: Tahoma;
+  margin: 0px;
+  overflow-x: hidden;
+}
+
+a{display: inline-block;}
+
+.profilebottom{
+  display: flex;
+  flex-direction: row;
+  width: 1366px; margin: 0 auto; overflow: hidden;
+}
+
+/* NAVBAR START */
+.navbar {
+  background-color: #e3ecfc;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px;
+  position: sticky;
+  top: 0px;
+  box-shadow: 0 2px 15px 0 rgba(0,0,0,.2);
+}
+
+.logo img {
+  width: auto;
+  height: 50px;
+}
+
+.navbarRight{
+  margin-top: -10PX;
+}
+
+.navbarRight img{
+  margin-bottom: -10PX;
+}
+.navbarRight a{
+  text-decoration: none;
+  color: #ffffff;
+  font-family: tahoma;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 40px;
+}
+.upload{
+  background-color: #557b37;
+  border: none;
+  color: #fff;
+  padding: 5px 20px;
+  margin-right: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 25px;
+  box-shadow: 0 2px 9px 0 rgba(0,0,0,.2); 
+}
+.cancel{
+  background-color: #b3b3b3;
+  border: none;
+  color: #fff;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 25px;
+  box-shadow: 0 2px 9px 0 rgba(0,0,0,.2); 
+}
+.book-cover {
+  width: 100%; 
+  max-width: 700px; 
+  height: auto; 
+  margin: auto; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+.upload-cover {
+  width: 100%; 
+  max-height: 400px; 
+}
+.addbooks {
+    margin: auto;
+    margin-top: 3%;
+    padding: 50px;
+  }
+input[type="text"] {
+  background-color: #fff;
+  border: 0.5px solid #000;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: Tahoma, Arial, Verdana, sans-serif;
+  font-size: 14px;
+  color: #322b2b;
+  box-shadow: 0px 0px 5px black;
+  width: 700px;
+  height: 50px;
+}
+.choicesGenre{
+  background-color: #fff;
+  border: 0.5px solid #000;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: Tahoma, Arial, Verdana, sans-serif;
+  font-size: 16px;
+  color: #322b2b;
+  box-shadow: 0px 0px 5px black;
+  width: 220px;
+  height: 50px;
+}
+.description{
+  margin-top: -525px;
+  left: 900px;
+  position: absolute;
+}
+textarea{
+  background-color: #fff;
+  border: 0.5px solid #000;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: Tahoma, Arial, Verdana, sans-serif;
+  font-size: 14px;
+  color: #322b2b;
+  box-shadow: 0px 0px 5px black;
+  max-width: 700px;
+  max-height: 450px;
+  min-width: 700px;
+  min-height: 450px;
+}
+
+.note{
+  padding: 10px 0px 50px 0px;
+}
+

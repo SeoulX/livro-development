@@ -1,0 +1,140 @@
+body {
+    background-color: #f2f7ff;
+    font-family: Tahoma;
+    margin: 0px;
+ 
+}
+/*Navigation*/
+.navbar {
+    background-color: #e3ecfc;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px;
+    position: sticky;
+    top: 0px;
+    box-shadow: 0 2px 15px 0 rgba(0,0,0,.2);
+    margin-top: -10px;
+    margin-left: -10px;
+    margin-right: -10px;     
+}
+.logo img {
+ width: auto;
+ height: 50px;
+}
+.navbarRight img{
+    margin-bottom: -10PX;
+}
+.navbarRight a{
+    text-decoration: none;
+    color: #fff;
+    font-family: tahoma;
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 40px;
+}
+.save{
+    background-color: #557b37;
+    border: none;
+    color: #fff;
+    padding: 9px 25px;
+    margin-right: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 25px;
+    box-shadow: 0 2px 9px 0 rgba(0,0,0,.2); 
+}
+.cancel{
+    background-color: #b3b3b3;
+    border: none;
+    color: #fff;
+    padding: 9px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 25px;
+    box-shadow: 0 2px 9px 0 rgba(0,0,0,.2); 
+}
+/*End of navigation*/
+
+/* Profile */
+.profilebg{
+    text-align: center;
+      padding: 40px;
+      margin: auto;
+      background-color: #FFFFFF;
+      box-shadow: 0 2px 9px 0 rgba(0,0,0,.2); 
+}
+.profilebg img{
+     margin: auto;
+      height: 100PX;
+      width: auto;
+}
+/*End of profile*/
+
+/*About User*/
+.user{
+    margin: auto;
+    margin-left: 44px;
+    margin-top: 3%;
+    margin-right: 100px;
+    padding: 50px;
+    background-color: #FFFFFF;
+    max-width: 300px;
+    border-radius: 40px;
+    box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+}
+.user p{
+    text-align: left;
+    margin-top: -5%;
+    margin-left: -5%;
+    margin-bottom: 40px;
+    font-size: x-large;
+}
+.info textarea{
+    min-height: 200px;
+    min-width: 290px;
+    max-height: 200px;
+    max-width: 290px;
+    border-radius: 10px;
+    box-shadow:  0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+}
+.info p{
+    font-size: medium;
+}
+/*End of about user*/
+
+/*Settings*/
+.settings{
+    margin-left: 550px;
+    margin-top: -360px;
+    margin-bottom: 90px;
+    width: 45%;
+    padding: 50px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    background-color: #FFFFFF;
+    max-width: 800px;
+    border-radius: 40px;
+    box-shadow:  0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+    text-align: justify;
+}
+.settings p{
+    margin-top: 17px;
+    font-size: x-large;
+}
+.details input{
+    margin: 10px;
+    width: 345px;
+    height: 35px;
+    border-radius: 10px;
+    box-shadow:  0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+}
+
+/*End of settings*/

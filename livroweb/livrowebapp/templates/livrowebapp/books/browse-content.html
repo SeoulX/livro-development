@@ -1,0 +1,409 @@
+{% load static %}
+<link href="{% static 'livrowebapp/css/books/browse-content.css' %}" rel="stylesheet" />
+<div class="content" >
+    <div class="searchbg"> 
+      <div class="search-box">
+        <button><img src="{% static 'livrowebapp/img/search48px.png' %}"></button>
+        <input type="text" placeholder="Search books...">
+      </div>
+      <div class="filters">
+        <button type="button" class="genre-button" id="actionbtn" value="Action">Action</button>
+        <button type="button" class="genre-button" id="fantasybtn" value="Fantasy">Fantasy</button>
+        <button type="button" class="genre-button" id="youngbtn" value="Young Adult">Young Adult</button>
+        <button type="button" class="genre-button" id="comedybtn" value="Comedy">Comedy</button>
+        <button type="button" class="genre-button" id="romancebtn" value="Romance">Romance</button>
+        <button type="button" class="genre-button" id="nonficbtn" value="NonFiction">NonFiction</button>
+        <button type="button" class="genre-button" id="scifibtn" value="Science Fiction">Science Fiction</button>
+        <button type="button" class="genre-button" id="horrorbtn" value="Horror">Horror</button>
+      </div>          
+    </div>
+
+    <!--Note: browse contents only contains top 10 from each genre. -->
+    
+    <div class="browsebottom">
+
+      <div class="genrebox" id="g1">
+        <p><b>Top 10 Trending Books</b></p>
+<div class="books">
+  <table>
+    <tr>
+        {% for book in all_books %}
+          <td>
+              <ul>
+                  <li><a href="{% url 'bookinformation' book.title %}"><img class="profileimg" src="{{ book.book_cover.url }}"></a></li>
+                  <li><p id="book-title">{{ book.title }}</p></li>
+                  {% for genre in book.genre_list %}
+                    <button type="button" class="genre-btn" value="{{ genre }}">
+                        {{ genre }}
+                    </button>
+                  {% endfor %}
+              </ul>
+          </td>
+        {% endfor %}
+    </tr>
+</table>
+</div>
+</div>
+      <div class="genrebox" id="g2">
+        <p><b>Top 10 Trending Action Books</b></p>
+        <div class="books">
+          <table>
+            <tr>
+              {% for book in all_books %}
+                {% for genre in book.genre_list %}
+                  {% if genre == 'Action' %}
+                    <td>
+                        <ul>
+                          <li><a href="{% url 'bookinformation' book.title %}"><img class="profileimg" src="{{ book.book_cover.url }}"></a></li>
+                          <li><p id="book-title">{{ book.title }}</p></li>
+                          {% for genre in book.genre_list %}
+                            <button type="button" class="genre-btn" value="{{ genre }}">
+                                {{ genre }}
+                            </button>
+                          {% endfor %}
+                        </ul>
+                    </td>
+                  {% endif %}
+                {% endfor %}
+              {% endfor %}
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="genrebox" id="g3">
+        <p><b>Top 10 Trending Fantasy Book</b></p>
+        <div class="books">
+          <table>
+            <tr>
+              {% for book in all_books %}
+              {% for genre in book.genre_list %}
+                {% if genre == 'Fantasy' %}
+                  <td>
+                      <ul>
+                        <li><a href="{% url 'bookinformation' book.title %}"><img class="profileimg" src="{{ book.book_cover.url }}"></a></li>                        <li><p id="book-title">{{ book.title }}</p></li>
+                        {% for genre in book.genre_list %}
+                          <button type="button" class="genre-btn" value="{{ genre }}">
+                              {{ genre }}
+                          </button>
+                        {% endfor %}
+                      </ul>
+                  </td>
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="genrebox" id="g4">
+        <p><b>Top 10 Trending Young Adult Books</b></p>
+        <div class="books">
+          <table>
+            <tr>
+              {% for book in all_books %}
+                {% for genre in book.genre_list %}
+                  {% if genre == 'Young Adult' %}
+                    <td>
+                        <ul>
+                          <li><a href="{% url 'bookinformation' book.title %}"><img class="profileimg" src="{{ book.book_cover.url }}"></a></li>                          <li><p id="book-title">{{ book.title }}</p></li>
+                          {% for genre in book.genre_list %}
+                            <button type="button" class="genre-btn" value="{{ genre }}">
+                                {{ genre }}
+                            </button>
+                          {% endfor %}
+                        </ul>
+                    </td>
+                  {% endif %}
+                {% endfor %}
+              {% endfor %}
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="genrebox" id="g5">
+        <p><b>Top 10 Trending Comedy Books</b></p>
+        <div class="books">
+          <table>
+            <tr>
+              {% for book in all_books %}
+              {% for genre in book.genre_list %}
+                {% if genre == 'Comedy' %}
+                  <td>
+                      <ul>
+                        <li><a href="{% url 'bookinformation' book.title %}"><img class="profileimg" src="{{ book.book_cover.url }}"></a></li>                        <li><p id="book-title">{{ book.title }}</p></li>
+                        {% for genre in book.genre_list %}
+                          <button type="button" class="genre-btn" value="{{ genre }}">
+                              {{ genre }}
+                          </button>
+                        {% endfor %}
+                      </ul>
+                  </td>
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="genrebox" id="g6">
+        <p><b>Top 10 Trending Romance Books</b></p>
+        <div class="books">
+          <table>
+            <tr>
+              {% for book in all_books %}
+                {% for genre in book.genre_list %}
+                  {% if genre == 'Romance' %}
+                    <td>
+                        <ul>
+                          <li><a href="{% url 'bookinformation' book.title %}"><img class="profileimg" src="{{ book.book_cover.url }}"></a></li>                          <li><p id="book-title">{{ book.title }}</p></li>
+                          {% for genre in book.genre_list %}
+                            <button type="button" class="genre-btn" value="{{ genre }}">
+                                {{ genre }}
+                            </button>
+                          {% endfor %}
+                        </ul>
+                    </td>
+                  {% endif %}
+                {% endfor %}
+              {% endfor %}
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="genrebox" id="g7">
+        <p><b>Top 10 Trending NonFiction Books</b></p>
+        <div class="books">
+          <table>
+            <tr>
+              {% for book in all_books %}
+              {% for genre in book.genre_list %}
+                {% if genre == 'Non-Fiction' %}
+                  <td>
+                      <ul>
+                        <li><a href="{% url 'bookinformation' book.title %}"><img class="profileimg" src="{{ book.book_cover.url }}"></a></li>                        <li><p id="book-title">{{ book.title }}</p></li>
+                        {% for genre in book.genre_list %}
+                          <button type="button" class="genre-btn" value="{{ genre }}">
+                              {{ genre }}
+                          </button>
+                        {% endfor %}
+                      </ul>
+                  </td>
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="genrebox" id="g8">
+        <p><b>Top 10 Trending SciFi Books</b></p>
+        <div class="books">
+          <table>
+            <tr>
+              {% for book in all_books %}
+                {% for genre in book.genre_list %}
+                  {% if genre == 'Science Fiction' %}
+                    <td>
+                        <ul>
+                          <li><a href="{% url 'bookinformation' book.title %}"><img class="profileimg" src="{{ book.book_cover.url }}"></a></li>                          <li><p id="book-title">{{ book.title }}</p></li>
+                          {% for genre in book.genre_list %}
+                            <button type="button" class="genre-btn" value="{{ genre }}">
+                                {{ genre }}
+                            </button>
+                          {% endfor %}
+                        </ul>
+                    </td>
+                  {% endif %}
+                {% endfor %}
+              {% endfor %}
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="genrebox" id="g9">
+        <p><b>Top 10 Trending Horror Books</b></p>
+        <div class="books">
+          <table>
+            <tr>
+              {% for book in all_books %}
+              {% for genre in book.genre_list %}
+                {% if genre == 'Horror' %}
+                  <td>
+                      <ul>
+                        <li><a href="{% url 'bookinformation' book.title %}"><img class="profileimg" src="{{ book.book_cover.url }}"></a></li>                        <li><p id="book-title">{{ book.title }}</p></li>
+                        {% for genre in book.genre_list %}
+                          <button type="button" class="genre-btn" value="{{ genre }}">
+                              {{ genre }}
+                          </button>
+                        {% endfor %}
+                      </ul>
+                  </td>
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+            </tr>
+          </table>
+        </div>
+      </div>
+              <!---------------------------------------contents to be hidden-------------------------->
+      <div id="hidden-content">
+      <div class="hidden-content">
+    
+      <div class="genrebox" id="h2">
+        <p><b>Action Books</b></p>
+        <div class="books">
+          {% for book in all_books %}
+            {% for genre in book.genre_list %}
+              {% if genre == 'Action' %}
+                <ul>
+                  <li><a href="{% url 'bookinformation' book.title %}"><img class="profileimg" src="{{ book.book_cover.url }}"></a></li>                  <li><p id="book-title">{{ book.title }}</p></li>
+                  {% for genre in book.genre_list %}
+                    <button type="button" class="genre-btn" value="{{ genre }}">
+                        {{ genre }}
+                    </button>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="genrebox" id="h3">
+        <p><b>Fantasy Books</b></p>
+        <div class="books">
+          {% for book in all_books %}
+            {% for genre in book.genre_list %}
+              {% if genre == 'Fantasy' %}
+                <ul>
+                  <li><a href="{% url 'bookinformation' book.title %}"><img class="profileimg" src="{{ book.book_cover.url }}"></a></li>                  <li><p id="book-title">{{ book.title }}</p></li>
+                  {% for genre in book.genre_list %}
+                    <button type="button" class="genre-btn" value="{{ genre }}">
+                        {{ genre }}
+                    </button>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="genrebox" id="h4">
+        <p><b>Young Adult Books</b></p>
+        <div class="books">
+          {% for book in all_books %}
+            {% for genre in book.genre_list %}
+              {% if genre == 'Young Adult' %}
+                <ul>
+                  <li><a href="{% url 'bookinformation' book.title %}"><img class="profileimg" src="{{ book.book_cover.url }}"></a></li>                  <li><p id="book-title">{{ book.title }}</p></li>
+                  {% for genre in book.genre_list %}
+                    <button type="button" class="genre-btn" value="{{ genre }}">
+                        {{ genre }}
+                    </button>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="genrebox" id="h5">
+        <p><b>Comedy Books</b></p>
+        <div class="books">
+          {% for book in all_books %}
+            {% for genre in book.genre_list %}
+              {% if genre == 'Comedy' %}
+                <ul>
+                  <li><a href="{% url 'bookinformation' book.title %}"><img class="profileimg" src="{{ book.book_cover.url }}"></a></li>                  <li><p id="book-title">{{ book.title }}</p></li>
+                  {% for genre in book.genre_list %}
+                    <button type="button" class="genre-btn" value="{{ genre }}">
+                        {{ genre }}
+                    </button>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="genrebox" id="h6">
+        <p><b>Romance Books</b></p>
+        <div class="books">
+          {% for book in all_books %}
+            {% for genre in book.genre_list %}
+              {% if genre == 'Romance' %}
+                <ul>
+                  <li><a href="{% url 'bookinformation' book.title %}"><img class="profileimg" src="{{ book.book_cover.url }}"></a></li>                  <li><p id="book-title">{{ book.title }}</p></li>
+                  {% for genre in book.genre_list %}
+                    <button type="button" class="genre-btn" value="{{ genre }}">
+                        {{ genre }}
+                    </button>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="genrebox" id="h7">
+        <p><b>NonFiction Books</b></p>
+        <div class="books">
+          {% for book in all_books %}
+          {% for genre in book.genre_list %}
+            {% if genre == 'Non-Fiction' %}
+              <ul>
+                <li><a href="{% url 'bookinformation' book.title %}"><img class="profileimg" src="{{ book.book_cover.url }}"></a></li>                <li><p id="book-title">{{ book.title }}</p></li>
+                {% for genre in book.genre_list %}
+                  <button type="button" class="genre-btn" value="{{ genre }}">
+                      {{ genre }}
+                  </button>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+        </div>
+      </div>
+      <div class="genrebox" id="h8">
+        <p><b>SciFi Books</b></p>
+        <div class="books">
+          {% for book in all_books %}
+          {% for genre in book.genre_list %}
+            {% if genre == 'Science Fiction' %}
+              <ul>
+                <li><a href="{% url 'bookinformation' book.title %}"><img class="profileimg" src="{{ book.book_cover.url }}"></a></li>                <li><p id="book-title">{{ book.title }}</p></li>
+                {% for genre in book.genre_list %}
+                  <button type="button" class="genre-btn" value="{{ genre }}">
+                      {{ genre }}
+                  </button>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+        </div>
+      </div>
+      <div class="genrebox" id="h9">
+        <p><b>Horror Books</b></p>
+        <div class="books">
+          {% for book in all_books %}
+            {% for genre in book.genre_list %}
+              {% if genre == 'Horror' %}
+                <ul>
+                  <li><a href="{% url 'bookinformation' book.title %}"><img class="profileimg" src="{{ book.book_cover.url }}"></a></li>                  <li><p id="book-title">{{ book.title }}</p></li>
+                  {% for genre in book.genre_list %}
+                    <button type="button" class="genre-btn" value="{{ genre }}">
+                        {{ genre }}
+                    </button>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script src="{% static 'livrowebapp/js/browse.js' %}"></script>

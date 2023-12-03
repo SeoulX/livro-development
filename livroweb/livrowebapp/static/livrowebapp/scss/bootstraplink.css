@@ -1,0 +1,15 @@
+.bootstrap-content {
+  @import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css");
+  background-color: beige;
+}
+.bootstrap-content .button {
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+}
+.bootstrap-content .button:hover {
+  background-color: #c1c1c1;
+}
+
+/*# sourceMappingURL=bootstraplink.css.map */

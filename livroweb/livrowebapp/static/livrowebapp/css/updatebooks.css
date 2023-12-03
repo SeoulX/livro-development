@@ -1,0 +1,134 @@
+/* styles.css */
+
+/* Global styles */
+body {
+    background-color: #f2f7ff;
+    font-family: Tahoma;
+    margin: 0px;
+    overflow-x: hidden;
+  }
+  
+  a{display: inline-block;}
+  
+  .profilebottom{
+    display: flex;
+    flex-direction: row;
+    width: 1366px; margin: 0 auto; overflow: hidden;
+  }
+  
+  .upload-cover{
+      right: 10px;
+      left: 150px;
+  }
+  .addbooks {
+      margin: auto;
+      margin-top: 3%;
+      padding: 50px;
+    }
+  input[type="text"] {
+    background-color: #fff;
+    border: 0.5px solid #000;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: Tahoma, Arial, Verdana, sans-serif;
+    font-size: 14px;
+    color: #322b2b;
+    box-shadow: 0px 0px 5px black;
+    width: 700px;
+    height: 50px;
+  }
+  .choicesGenre{
+    background-color: #fff;
+    border: 0.5px solid #000;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: Tahoma, Arial, Verdana, sans-serif;
+    font-size: 16px;
+    color: #322b2b;
+    box-shadow: 0px 0px 5px black;
+    width: 220px;
+    height: 50px;
+  }
+  .description{
+    margin-top: -525px;
+    left: 900px;
+    position: absolute;
+  }
+  textarea{
+    background-color: #fff;
+    border: 0.5px solid #000;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: Tahoma, Arial, Verdana, sans-serif;
+    font-size: 14px;
+    color: #322b2b;
+    box-shadow: 0px 0px 5px black;
+    max-width: 700px;
+    max-height: 450px;
+    min-width: 700px;
+    min-height: 450px;
+  }
+  .book-cover{
+    width: 700px; /* Adjust the width as needed */
+    height: 200px; /* Adjust the height as needed */
+    margin: auto; /* Center horizontally */
+    justify-content: center; /* Center horizontally within the flex container */
+    align-items: center; /* Center vertically within the flex container */
+  }
+  .note{
+    padding: 10px 0px 50px 0px;
+  }
+
+
+  
+  .wrap {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  .book-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .book-table th, .book-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .book-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .book-cover {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .action-buttons button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .action-buttons button:hover {
+    background-color: #45a049;
+  }
+  

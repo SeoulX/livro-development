@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link href="{% static 'livrowebapp/css/editbooks.css' %}" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+    <title>livro</title>
+</head>
+
+<body>
+    <div class="navbar" id="myNavbar">
+        <div class="logo">
+            <a href="browse"><img src="{% static 'livrowebapp/img/logo.png' %}" width="100" /></a>
+        </div>
+        <div class="navbarRight">
+            <tr>
+                <th><button id="Upload" class="upload" type="submit" form="addBookForm">UPDATE</button></th>
+                <th><a button class="cancel" href="/updatebooks/">CANCEL</a></th>
+            </tr>
+        </div>
+    </div>
+    <div class="addbooks">
+        <div class="book-cover">
+            <form id="addBookForm" action="{% url 'edit_book' book.id %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <tr>
+                    <th>
+                      <p><b>Book Cover</b></p>
+                    </th>
+                    <th>
+                      <input type="file" id="coverInput" name="book_cover" accept="image/*" style="display: none;" onchange="previewCoverImage(this)">
+                    </th>
+                    <th>
+                      <a href="#" id="getCover">
+                        <img
+                          class= "upload-cover" id="coverPreview"
+                          src="{{ book.book_cover.url }}"
+                          style="max-height: 200px; "
+                      /></a>
+                    </th>
+                  </tr> 
+                <p><b>Book Title</b></p>
+                <input type="text" name="title" value="{{ book.title }}" />
+                <p><b>Author</b></p>
+                <input type="text" name="author" value="{{ book.author }}" />
+                <p><b>Genre</b></p>
+                <select class="choicesGenre" name="genre" id="genres" onchange="addGenre()">
+                  <option value="Action" {% if book.genre == 'Action' %} selected {% endif %}>Action</option>
+                  <option value="Fantasy" {% if book.genre == 'Fantasy' %} selected {% endif %}>Fantasy</option>
+                  <option value="Young Adult" {% if book.genre == 'Young Adult' %} selected {% endif %}>Young Adult</option>
+                  <option value="Comedy" {% if book.genre == 'Comedy' %} selected {% endif %}>Comedy</option>
+                  <option value="Romance" {% if book.genre == 'Romance' %} selected {% endif %}>Romance</option>
+                  <option value="Non-Fiction" {% if book.genre == 'Non-Fiction' %} selected {% endif %}>Non-Fiction</option>
+                  <option value="Science Fiction" {% if book.genre == 'Science Fiction' %} selected {% endif %}>Science Fiction</option>
+                  <option value="Horror" {% if book.genre == 'Horror' %} selected {% endif %}>Horror</option>
+                    
+                </select>
+                <p><b>Access Link</b></p>
+                <input type="text" name="access_link" value="{{ book.access_link }}" />
+                <p><b>Description</b></p>
+                <textarea type="text" class="textArea" name="description">{{ book.description }}</textarea>
+            </form>
+            <div class="note">
+                <p><b>Note: Uploading and verification of the book may take 2 to 3 days.<b></p>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'livrowebapp/js/addbooks.js' %}"></script>
+</body>
+
+</html>

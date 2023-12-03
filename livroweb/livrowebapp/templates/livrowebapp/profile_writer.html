@@ -1,0 +1,65 @@
+{% load static %}
+{% include 'livrowebapp/home.html' %}
+{% block content %}
+
+<link href="{% static 'livrowebapp/css/profile_writer.css' %}" rel="stylesheet" />
+<div class="content">
+  <div class="profilebackground">
+    <img src="{% static 'livrowebapp/img/writerimage.png' %}" />
+    <p>@{{ member.username }}</p>
+    <a button class="editprofile" href="{% url 'manageprofile_writer' %}">Edit Profile</a>
+  </div>
+  <div class="profilebottom">
+    <div class="profilebottomLeft">
+      <div class="aboutuser">
+        <p><b>About user:</b> <br><br>{{ member.about_user }}</p>
+      </div>
+
+      <div class="addupdatebuttons">
+        <a class="addbook" href="{% url 'addbooks' %}">Upload Book</a>
+        <a class="updatebook" href="{% url 'updatebooks' %}">Update Book</a>
+      </div>
+
+    </div>
+
+    <div class="userbookshelf">
+
+      <p> <b>User Bookshelf</b> <br>
+        Uploaded Books</p>
+      <div class="books">
+        <table>
+          <tr>
+            <th> <a href="#"> <img class="profileicon" src="{% static 'livrowebapp/img/book1.png' %}"></a></th>
+            <th> <a href="#"> <img class="profileicon" src="{% static 'livrowebapp/img/book1.png' %}"></a> </th>
+            <th> <a href="#"> <img class="profileicon" src="{% static 'livrowebapp/img/book1.png' %}"></a> </th>
+            <th> <a href="#"> <img class="profileicon" src="{% static 'livrowebapp/img/book1.png' %}"></a> </th>
+            <th> <a href="#"> <img class="profileicon" src="{% static 'livrowebapp/img/book1.png' %}"></a> </th>
+            <th> <a href="#"> <img class="profileicon" src="{% static 'livrowebapp/img/book1.png' %}"></a> </th>
+          </tr>
+          <tr>
+            <td>
+              <p>Fantasy</p>
+            </td>
+            <td>
+              <p>Fantasy</p>
+            </td>
+            <td>
+              <p>Fantasy</p>
+            </td>
+            <td>
+              <p>Fantasy</p>
+            </td>
+            <td>
+              <p>Fantasy</p>
+            </td>
+            <td>
+              <p>Fantasy</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{% static 'livrowebapp/js/profile.js' %}"></script>
+{% endblock %}

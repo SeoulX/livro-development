@@ -1,0 +1,37 @@
+{% extends 'livrowebapp/home.html' %}
+{% load static %} 
+{% block content %}
+
+  <link href="{% static 'livrowebapp/css/updatebooks.css' %}" rel="stylesheet" />
+    
+
+    <div class="wrap">
+      <h1>Your Books</h1>
+    
+      <table class="book-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Book Cover</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for book in books %}
+            <tr>
+              <td>{{ book.title }}</td>
+              <td>{{ book.author }}</td>
+              <td>{{ book.genre }}</td>
+              <td><img src="{{ book.book_cover.url }}" alt="{{ book.title }}" class="book-cover"></td>
+              <td class="action-buttons">
+                <a href="{% url 'edit_book' book.id %}"><button>Edit</button></a>
+                <a href="{% url 'delete_book' book.id %}"><button>Delete</button></a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,79 @@
+body{
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    padding: 70px;
+    padding-top: 60px;
+    background-color: #FFFFFF;
+    max-width: 280px;
+    border-radius: 40px;
+    box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+    margin: 0 auto;
+    margin-block: 100px;
+    text-align: center;
+}
+.heading{
+    font-size: 24px;
+}
+.logo{
+    margin-top: -10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ques{
+    font-size: 100%;
+    margin-top: 20px;
+}
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+.readerbtn {
+    width: 8vw;
+    height: 15vh;
+    background-color: #fff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+}
+.writerbtn {
+    width: 8vw;
+    height: 15vh;
+    background-color: #fff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+}
+.readerbtn img {
+    max-width: 50px;
+    max-height: 50px;
+}
+.writerbtn img {
+    max-width: 50px;
+    max-height: 50px;
+}

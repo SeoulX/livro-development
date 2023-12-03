@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="{% static 'livrowebapp/css/home.css' %}" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>livro</title>
+  </head>
+  <body>
+
+    <div class="navbar" id="myNavbar">
+      <div class="logo">
+        <a href="/browse_writer/"><img src="{% static 'livrowebapp/img/logo.png' %}" width="100"/></a>
+      </div>
+
+      <div class="navbarRight">        
+        <tr>
+            <th>
+              {% if member.type_user == 'Reader' %}
+              <a href="/browse_reader/"> Home</a> 
+              {% elif member.type_user == 'Writer' %}
+              <a href="/browse_writer/"> Home</a>
+              {% endif %} 
+            </th>
+            <th> 
+              {% if member.type_user == 'Reader' %}
+              <a href="/aboutus_logged/"> About Us</a> 
+              {% elif member.type_user == 'Writer' %}
+              <a href="/aboutus_logged/"> About Us</a>
+              {% endif %} 
+            </th>
+            <th>  <a href="/browse/"> Logout</a> </th>
+            <th>
+              {% if member.type_user == 'Reader' %}
+                <a href="{% url 'profile' %}"><img class="profileicon" src="{% static 'livrowebapp/img/profileicon.png' %}"></a>
+              {% elif member.type_user == 'Writer' %}
+                <a href="{% url 'profile_writer' %}"><img class="profileicon" src="{% static 'livrowebapp/img/profileicon.png' %}"></a>
+              {% endif %}
+            </th>
+          </tr>
+    </div>
+  </div>
+  <link href="{% static 'livrowebapp/css/_navbar.css' %}" rel="stylesheet" />
+      
+  </body>
+<div class="container">
+  {% block content %}
+
+  {% endblock %}
+</div>

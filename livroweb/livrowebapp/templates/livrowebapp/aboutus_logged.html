@@ -1,0 +1,26 @@
+{% extends 'livrowebapp/home.html' %}
+{% load static %} 
+{% block content %}
+    <link href="{% static 'livrowebapp/css/aboutus_logged.css' %}" rel="stylesheet" />
+
+    <div class="bodies">
+        <div class="aboutus">
+            <h1>About Us</h1>
+        </div>
+        <div class="content">
+            <p>Livro is an online library that provides access to a wide variety of novels, including classics, contemporary fiction, and everything in between. Our mission is to make reading accessible to everyone, regardless of their location or budget.</p>
+            <p>We believe that reading is essential for personal growth and development. It exposes us to new ideas and perspectives, and it helps us to better understand ourselves and the world around us. We are committed to providing a wide selection of novels to meet the needs of all readers.</p>
+        </div>
+    </div>
+    <div id="popup-container" class="overlay"></div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-copyright">
+                <p>Copyright &copy; 2023</p>
+            </div>
+        </div>
+    </footer>
+  
+    <script src="{% static 'livrowebapp/js/landing.js' %}"></script>
+{% endblock %}

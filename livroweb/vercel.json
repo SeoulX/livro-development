@@ -1,0 +1,11 @@
+{
+    "builds": [{
+        "src":"livroweb/wsgi.py",
+        "use":"@vercel/python",
+        "config":{ "maxLambdaSize": "15mb", "runtime": "python4.2.5"}
+    }],
+    "routes": [{
+        "src": "/(.*)",
+        "dest":"livroweb/wsgi.py"
+    }]
+}

@@ -1,0 +1,114 @@
+{% load static %}
+{% include 'livrowebapp/home.html' %}
+{% block content %}
+  <head>
+    <meta charset="UTF-8" />
+    <link href="{% static 'livrowebapp/css/bookinformation.css' %}" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+    <title>livro</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+  </head>
+  <body>
+    <div class="main-content">
+        <div class="container" id="book-content">
+            <div class="row">
+                <div id="book-poster">
+                    <img class="img-responsive" src="{{ book.book_cover.url }}">
+                    <div class="post-rating-container">
+                        <div class="post-rating">
+                            <span class="post-rating-button material-icons">thumb_up</span>
+                            <span class="post-rating-count">0</span>
+                        </div>
+                        <div class="post-rating">
+                            <span class="post-rating-button material-icons">thumb_down</span>
+                            <span class="post-rating-count">0</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="book-info">
+                    <h1>{{ book.title }}</h1>
+                    <h2>Author: {{ book.author }}</h2>
+                    <p>Genre: {{ book.genre }}</p>
+                    <p>Uploaded by: {{ book.uploader }}</p>
+                    <p>Access Link: <a href="{{ book.access_link }}">{{ book.title }}</a></p>
+                    <div class="book-description">
+                        <div class="book-card">
+                            <div class="description">
+                                {% for line in book.description.splitlines %}
+                                    <p>{{ line }}</p>
+                                    {% if forloop.counter|divisibleby:5 and not forloop.last %}
+                                        <!-- Add a new paragraph after every 5 lines, excluding the last one -->
+                                    </p>
+                                    <p>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <a class="more"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="comment-section">
+                    <div class="post-comment">
+                        <div class="comment-list">
+                            <div class="flex">
+                                <div class="user">
+                                    <div class="user-image"><img src="{% static 'livrowebapp/img/profileicon.png' %}"></div>
+                                    <div class="user-meta">
+                                        <div class="name">Jumperman</div>
+                                        <div class="day">10 days ago</div>
+                                    </div>
+                                </div>
+                                <div class="reply">
+                                    <div class="re-comment">Reply</div>
+                                </div>
+                            </div>
+                            <div class="comment">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                            </div>
+                        </div>
+                        <form action="" class="comment-box">
+                            <div class="user">
+                                <div class="image"><img src="{% static 'livrowebapp/img/profileicon.png' %}"></div>
+                                <div class="name">Jumperman</div>
+                            </div>
+                            <textarea name="comment"></textarea>
+                            <button class="comment-submit">Comment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="userbookshelf">
+                    <p> 
+                    <b>Browse Other Books</b>
+                    </p>
+                    <div class="books">
+                        <table>
+                            <tr>
+                            <th>  <a href="#"> <img class="profileicon" src="{% static 'livrowebapp/img/book1.png' %}"></a></th>
+                            <th>  <a href="#"> <img class="profileicon" src="{% static 'livrowebapp/img/book1.png' %}"></a> </th>
+                            <th>  <a href="#"> <img class="profileicon" src="{% static 'livrowebapp/img/book1.png' %}"></a> </th>
+                            <th>  <a href="#"> <img class="profileicon" src="{% static 'livrowebapp/img/book1.png' %}"></a> </th>
+                            <th>  <a href="#"> <img class="profileicon" src="{% static 'livrowebapp/img/book1.png' %}"></a> </th>
+                            <th>  <a href="#"> <img class="profileicon" src="{% static 'livrowebapp/img/book1.png' %}"></a> </th>
+                            </tr>
+                            <tr>
+                            <td><p>Fantasy</p> </td>
+                            <td><p>Fantasy</p> </td>
+                            <td><p>Fantasy</p> </td>
+                            <td><p>Fantasy</p> </td>
+                            <td><p>Fantasy</p> </td>
+                            <td><p>Fantasy</p> </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'livrowebapp/js/bookinformation.js' %}"></script>
+    {% endblock %}

@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="{% static 'livrowebapp/css/landing.css' %}" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+    <title>livro</title>
+  </head>
+  <body>
+    <div class="navbar" id="myNavbar">
+      <div class="logoMain">
+        <a href="/browse/"><img src="{% static 'livrowebapp/img/logo.png' %}" width="100"/></a>
+      </div>
+    </div>
+  
+    <div class="container-body">
+      <div class="logo1">
+        <img src="{% static 'livrowebapp/img/logo.png' %}" alt="Logo" width="100" />
+      </div>
+      <div class="tagline">
+        <h1>Your Story Lives Here</h1>
+      </div>
+      <div class="desc">
+        <h2>
+          Step into a captivating world of literary treasures at our e-library
+          dedicated exclusively to novels. We invite you to embark on a literary
+          adventure, where every page is a gateway to imagination, emotion, and
+          storytelling magic.
+        </h2>
+      </div>
+      <div class="buttons">
+        <a button class="browse" href="browse/">Browse</a>
+        <a id="login-button" class="login" href="#">Login</a>
+        <a id="signup-button" class="signup" href="#">Sign Up</a>
+        <a button class="aboutus" href="aboutus/">About Us</a>
+      </div>
+    </div>
+    
+    <div id="popup-container" class="overlay"></div>
+  
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-copyright">
+          <p>Copyright &copy; 2023</p>
+        </div>
+      </div>
+    </footer>
+    <script src="{% static 'livrowebapp/js/landing.js' %}"></script>
+    <script src="{% static 'livrowebapp/js/signup.js' %}"></script>
+  </body>
+</html>
